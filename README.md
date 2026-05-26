@@ -2,21 +2,25 @@
 
 
 
-注意：在使用此仓库的配置文件时，建议先备份自己的配置文件，避免出现配置丢失的情况,配置文件中的大多数配置也是借鉴别人的开源仓库。
+注意：在使用此仓库的配置文件时，建议先备份自己的配置文件，避免出现配置丢失的情况,配置文件中的大多数配置也是借鉴别人的开源仓库,再次感谢其他作者的开源项目！！！。
 
 ### 截图
 
 #### 桌面截图
 
-![image-20260526223208838](/home/annoy/.config/Typora/typora-user-images/image-20260526223208838.png)
+#### ![1](./assets/1.png)
+
+
 
 #### swaync截图
 
-![image-20260526223329001](/home/annoy/.config/Typora/typora-user-images/image-20260526223329001.png)
+#### ![2](./assets/2.png)
+
+
 
 #### kitty程序截图
 
-![image-20260526223503456](/home/annoy/.config/Typora/typora-user-images/image-20260526223503456.png)
+![3](./assets/3.png)
 
 
 
