@@ -1,0 +1,47 @@
+# -------------------------------------------------- #
+# Shell
+# -------------------------------------------------- #
+shell-integration-features = no-cursor,sudo,title,ssh-env,ssh-terminfo
+# -------------------------------------------------- #
+# -------------------------------------------------- #
+# Font
+# -------------------------------------------------- #
+font-family = JetBrainsMono Nerd Font
+font-family = PingFang Sc
+font-thicken = true
+font-thicken-strength = 128
+font-size = 13
+# -------------------------------------------------- #
+# Custom 
+# -------------------------------------------------- #
+theme = Xcode Dark hc
+background-opacity      = 0.35
+mouse-hide-while-typing = true
+unfocused-split-opacity = 0.8
+window-padding-x        = 10
+window-padding-y        = 10
+window-padding-balance  = true
+window-subtitle         = false
+window-decoration       = none
+window-theme            = auto
+window-colorspace       = display-p3
+window-step-resize      = false
+window-width            = 150
+window-height           = 40
+window-new-tab-position = current
+focus-follows-mouse     = false
+cursor-color = #f08898
+
+# -------------------------------------------------- #
+# Shader 
+# -------------------------------------------------- #
+custom-shader = "shaders/cursor_warp.glsl"
+custom-shader = "shaders/ripple_cursor.glsl"
+
+# -------------------------------------------------- #
+# Clipboard 
+# -------------------------------------------------- #
+clipboard-read                 = allow
+clipboard-write                = allow
+clipboard-paste-protection     = true
+clipboard-trim-trailing-spaces = true

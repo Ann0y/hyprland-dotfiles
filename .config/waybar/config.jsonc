@@ -1,0 +1,66 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "modules-left": [
+        "custom/current-workspace",
+        "hyprland/window"
+
+    ],
+    "modules-right": [
+        "tray",
+        "battery",
+        "custom/swaync",
+        "network",
+        "clock"
+    ],
+    "custom/swaync": {
+        "tooltip": false,
+        "format": "󰂚",
+        "on-click": "swaync-client -t",
+        "on-click-right": "swaync-client -op"
+    },
+    "custom/current-workspace": {
+        "exec": "~/.config/waybar/scripts/current-workspace.sh",
+        "interval": 0.5,
+        "format": "{}",
+        "restart-interval": 0,
+    },
+    "hyprland/window": {
+        "format": "{initialTitle}",
+        "max-length": 20, 
+        "rewrite": {
+            "^(?!.*\\S).*": "annoy",
+        }
+    },
+
+    "tray": {
+        "icon-size": 19,
+        "spacing": 20
+    },
+
+    "clock": {
+        "format": "{:%a %B %d %H:%M}",
+        "tooltip": false,
+    },
+       "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+   "network": {
+        "format-wifi": "",
+        "format-ethernet": "  {ifname}",
+        "format-disconnected": "  Offline",
+        "interval": 7
+    },
+}

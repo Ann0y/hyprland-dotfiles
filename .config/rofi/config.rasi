@@ -1,0 +1,35 @@
+configuration {
+    modes:"drun,run,window,filebrowser";
+    drun {
+        display-name:"";
+    }
+    run {
+        display-name:"";
+    }
+    window {
+        display-name:"";
+    }
+    filebrowser {
+        display-name:"";
+    }
+    show-icons: true;
+    font: "SF Pro Display 12";
+    icon-theme:"Colloid-Light";
+    fixed-num-lines:true;
+    terminal:"ghostty";
+    window-thumbnail:true;
+    timeout {
+        // The delay after inactivity to execute action.
+        delay: 0;
+        // The action to execute once the delay expires.
+        action: "kb-cancel";
+    }
+
+    // File browser mode.
+    filebrowser {
+        sorting-method:    "name";
+        directories-first: true;
+    }
+}
+
+@theme "theme"

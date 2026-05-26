@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+ROFI_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/rofi/config.rasi"
+
+options=(
+    "Lock"
+    "Logout"
+    "Suspend"
+    "Reboot"
+    "Shutdown"
+)
+
+selected=$(printf '%s\n' "${options[@]}" | rofi -dmenu -config "$ROFI_CONFIG" -p "Session" -theme-str '
+window {
+    width: 500px;
+    padding: 16px;
+    background-color: rgba(24, 24, 28, 0.95);
+    border-radius: 16px;
+    location: center;
+    anchor: center;
+}
+inputbar { enabled: false; }
+listview {
+    lines: 5;
+    spacing: 6px;
+    scrollbar: false;
+}
+element {
+    padding: 14px 24px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+element selected {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+* {
+    font: "Inter Regular 16";
+    background-color: transparent;
+    text-color: #ffffff;
+}
+')
+
+case "$selected" in
+    Lock)     hyprlock ;;
+    Logout)   hyprctl dispatch exit ;;
+    Suspend)  systemctl suspend ;;
+    Reboot)   systemctl reboot ;;
+    Shutdown) systemctl poweroff ;;
+esac

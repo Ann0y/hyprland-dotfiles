@@ -1,0 +1,18 @@
+@define-color background #1c1c1e;
+@define-color foreground #f5f5f7;
+@define-color secondary  #98989d;
+@define-color separator  #38383a;
+
+@define-color surface    #2c2c2e;
+@define-color elevated   #3a3a3c;
+
+@define-color accent     #0a84ff;
+@define-color pink       #ff375f;
+@define-color purple     #bf5af2;
+@define-color red        #ff453a;
+@define-color orange     #ff9f0a;
+@define-color yellow     #ffd60a;
+@define-color green      #30d158;
+@define-color blue       #0a84ff;
+@define-color gray       #636366;
+@define-color select     #3a3a3c;

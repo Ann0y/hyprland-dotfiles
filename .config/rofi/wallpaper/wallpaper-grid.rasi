@@ -1,0 +1,63 @@
+configuration {
+    show-icons: true;
+}
+
+* {
+    font: "Inter Regular 10";
+    accent: #cba6f7;
+}
+
+window {
+    width: 80%;
+    padding: 20px;
+    background-color: rgba(50, 50, 50, 0.5);
+    border: 0;
+    border-radius: 14px;
+    location: center;
+    anchor: center;
+}
+
+inputbar {
+    enabled: false;
+}
+
+listview {
+    columns: 4;
+    lines: 1;
+    scrollbar: true;
+    padding: 0;
+}
+
+element {
+    orientation: vertical;
+    padding: 0;
+    border-radius: 14px;
+    background-color: transparent;
+    cursor: pointer;
+    border: 2px;
+    border-color: transparent;
+}
+
+element-icon {
+    size: 300px;
+    border-radius: 16px;
+    padding: 0;
+    background-color: transparent;
+}
+
+element-text {
+    enabled: false;
+}
+
+element selected {
+    background-color: transparent;
+    border-color: @accent;
+}
+
+element selected element-icon {
+    background-color: transparent;
+}
+
+mainbox {
+    children: [ listview ];
+}

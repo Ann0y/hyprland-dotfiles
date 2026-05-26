@@ -1,0 +1,94 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+WALLPAPER_DIR="${WALLPAPER_DIR:-$HOME/.local/share/backgrounds}"
+THUMBNAIL_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/wallpaper-thumbs"
+ROFI_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/rofi/wallpaper/config.rasi"
+
+die() { echo "Error: $*" >&2; exit 1; }
+
+if ! command -v rofi &>/dev/null; then
+    die "rofi is not installed"
+fi
+
+if ! command -v awww &>/dev/null; then
+    die "awww is not installed"
+fi
+
+if [[ ! -d "$WALLPAPER_DIR" ]]; then
+    die "wallpaper directory not found: $WALLPAPER_DIR"
+fi
+
+ensure_awww() {
+    if ! pgrep -x awww-daemon >/dev/null 2>&1; then
+        awww-daemon >/dev/null 2>&1 &
+        sleep 0.5
+    fi
+}
+
+generate_thumbnails() {
+    mkdir -p "$THUMBNAIL_DIR"
+    local img thumb ext name
+    for img in "$WALLPAPER_DIR"/*; do
+        [[ -f "$img" ]] || continue
+        ext="${img##*.}"
+        ext="${ext,,}"
+        case "$ext" in
+            jpg|jpeg|png|webp|gif|bmp|tiff|tif) ;;
+            *) continue ;;
+        esac
+
+        name="$(basename "${img%.*}")"
+        thumb="$THUMBNAIL_DIR/${name}.png"
+
+        if [[ ! -f "$thumb" ]] || [[ "$img" -nt "$thumb" ]]; then
+            if command -v magick &>/dev/null; then
+                magick "$img" -resize 240x240^ -gravity center -extent 240x240 "$thumb" 2>/dev/null || true
+            elif command -v convert &>/dev/null; then
+                convert "$img" -resize 240x240^ -gravity center -extent 240x240 "$thumb" 2>/dev/null || true
+            else
+                die "ImageMagick (magick or convert) is required for thumbnail generation"
+            fi
+        fi
+    done
+}
+
+build_menu() {
+    local img thumb name ext base
+    for img in "$WALLPAPER_DIR"/*; do
+        [[ -f "$img" ]] || continue
+        ext="${img##*.}"
+        ext="${ext,,}"
+        case "$ext" in
+            jpg|jpeg|png|webp|gif|bmp|tiff|tif) ;;
+            *) continue ;;
+        esac
+
+        name="$(basename "$img")"
+        base="${name%.*}"
+        thumb="$THUMBNAIL_DIR/${base}.png"
+
+        if [[ -f "$thumb" ]]; then
+            printf '%s\0icon\x1f%s\n' "$name" "$thumb"
+        else
+            printf '%s\n' "$name"
+        fi
+    done
+}
+
+main() {
+    generate_thumbnails
+    ensure_awww
+
+    local selected
+    selected=$(build_menu | rofi -dmenu -config "$ROFI_CONFIG" -no-custom -p "󰸉")
+
+    if [[ -n "$selected" ]]; then
+        awww img "$WALLPAPER_DIR/$selected" \
+            --transition-type outer \
+            --transition-fps 60 \
+            --transition-pos 0.5,0.5
+    fi
+        notify-send "Wallpaper changed successfully"
+}
+main "$@"

@@ -1,0 +1,164 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Inter Regular", "PingFang SC";
+    min-height: 0;
+    font-weight:800;
+}
+
+window#waybar {
+    background: transparent;
+    color: rgb(255, 255, 255);
+}
+
+tooltip {
+    background: rgba(255, 255, 255, 0.14);
+    border: 0.5px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 12px;
+}
+
+tooltip label {
+    color: rgb(255, 255, 255);
+    padding: 2px 0;
+}
+
+#custom-current-workspace {
+    padding: 0 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+
+#window {
+    color: #ffffff;
+    padding: 0 14px;
+    font-size:16px;
+    font-weight:700;
+}
+
+/* ── Right modules ── */
+#clock,
+#battery,
+#network,
+#tray,
+#custom-swaync,
+#custom-power {
+    padding:0 7px;
+    margin:0 7px;
+    background: transparent;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight:900;
+}
+
+
+#clock:hover,
+#network:hover,
+#battery:hover,
+#custom-swaync:hover,
+#custom-power:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+}
+
+#custom-swaync {
+    font-size: 18px;
+}
+
+#clock {
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+    padding: 0 10px;
+    margin-right: 4px;
+    font-size:15px;
+}
+
+/* ── Battery ── */
+#battery.critical:not(.charging) {
+    color: #ff6b6b;
+}
+
+#battery.warning:not(.charging) {
+    color: #ffa726;
+}
+#battery.charging,
+#battery.plugged {
+    color: #30d158;
+}
+
+@keyframes blink {
+    to {
+        color: #ff6b6b;
+    }
+}
+
+#battery.critical:not(.charging) {
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+
+#network.disconnected {
+    color: rgba(255, 255, 255, 0.40);
+}
+
+#pulseaudio.muted {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+/* #tray>.passive { */
+/*     -gtk-icon-effect: dim; */
+/* } */
+/**/
+/* #tray>.needs-attention { */
+/*     -gtk-icon-effect: highlight; */
+/* } */
+/**/
+/* #tray>.active { */
+/*     -gtk-icon-effect: none; */
+/* } */
+
+menu,
+menu *,
+decoration,
+.window-frame {
+  all: unset;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+
+menu {
+  border-radius: 16px;
+  background: #1a1a1a;; 
+  padding: 4px;
+
+}
+
+
+menuitem {
+  border-radius: 12px;
+  padding: 6px 12px;
+  margin: 2px 0;
+  color: #cdd6f4;
+  font-size:15px;
+  font-weight:500;
+  font-family:"Inter Regular","PingFang SC";
+}
+
+menuitem:hover {
+  background: rgba(255,255,255,0.14);
+}
+
+
+window.popup {
+  background: transparent;
+}
